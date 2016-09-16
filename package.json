@@ -1,0 +1,18 @@
+{
+  "name": "conditional-buttons",
+  "version": "0.0.0",
+  "description": "Hello Exponent!",
+  "author": "exponent.team@gmail.com",
+  "private": true,
+  "main": "main.js",
+  "dependencies": {
+    "@exponent/ex-navigation": "^1.5.26",
+    "@exponent/samples": "^1.0.2",
+    "@exponent/vector-icons": "^1.0.1",
+    "exponent": "10.0.0",
+    "react": "15.3.1",
+    "react-native": "github:exponentjs/react-native#sdk-10.0.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0"
+  }
+}

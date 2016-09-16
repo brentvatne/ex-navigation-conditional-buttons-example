@@ -94,7 +94,14 @@ class HomeScreen extends React.Component {
 
   static route = {
     navigationBar: {
-      title: 'Hello world',
+      title: (route) => {
+        let title = 'Hello world';
+        if (route.titleIsReversed) {
+          return title.split('').reverse().join('');
+        } else {
+          return title;
+        }
+      },
       renderLeft: () => (
         <LeftButton />
       ),
@@ -112,12 +119,23 @@ class HomeScreen extends React.Component {
     this.props.route.getEventEmitter().emit('toggle-right-button');
   }
 
+  _toggleReverseTitle = () => {
+    this.props.navigator.updateCurrentRouteParams({
+      titleIsReversed: !this.props.route.params.titleIsReversed
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <TouchableOpacity style={styles.toggle} onPress={this._toggleLeftButton}>
           <Text>Toggle left button</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity style={styles.toggle} onPress={this._toggleReverseTitle}>
+          <Text>Reverse title</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity style={styles.toggle} onPress={this._toggleRightButton}>
           <Text>Toggle right button</Text>
         </TouchableOpacity>

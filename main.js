@@ -1,23 +1,10 @@
 import Exponent from 'exponent';
 import React from 'react';
-import {
-  AppRegistry,
-  Platform,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import {
-  createRouter,
-  NavigationProvider,
-  StackNavigation,
-} from '@exponent/ex-navigation';
-
+import { StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { createRouter, NavigationProvider, StackNavigation } from '@exponent/ex-navigation';
 import { MaterialIcons } from '@exponent/vector-icons';
-import { createStore } from 'redux';
 import { Provider as ReduxProvider, connect } from 'react-redux';
+import { createStore } from 'redux';
 
 // The dumbest most simple store you can have
 const Store = createStore(function(state = {}, action) {
@@ -142,14 +129,18 @@ class HomeScreen extends React.Component {
 class AppContainer extends React.Component {
   render() {
     return (
-      <NavigationProvider router={Router}>
-        <ReduxProvider store={Store}>
-          <StackNavigation
-            id="root"
-            initialRoute={Router.getRoute('home')}
-          />
-        </ReduxProvider>
-      </NavigationProvider>
+      <View style={{flex: 1}}>
+        <NavigationProvider router={Router}>
+          <ReduxProvider store={Store}>
+            <StackNavigation
+              id="root"
+              initialRoute={Router.getRoute('home')}
+            />
+          </ReduxProvider>
+        </NavigationProvider>
+
+        <StatusBar barStyle="default" />
+      </View>
     );
   }
 }
